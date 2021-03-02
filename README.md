@@ -4,5 +4,9 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
 **1.** Navigate to [Raspberry Pi OS Installer](https://www.raspberrypi.org/software/).
 
-   Download the installer for your desired OS.
+         Download the Raspberry Pi OS installer for your desired OS.
+         
+         Insert the micro sd card that will be used in your pi into your PC.
+         
+         From the program menu select the Raspberry Pi OS, then the intended drive
 
