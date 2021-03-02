@@ -5,10 +5,10 @@ For cost effectiveness I purchased three Canakits which come with everything you
 
 [Canakit](https://www.amazon.com/gp/product/B07V5JTMV9/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
 
-   *pi version 4
-   *Micro Sd memory card
-   *power supply
-   *heatsinks
+   * pi version 4
+   * Micro Sd memory card
+   * power supply
+   * heatsinks
 You can use the included case but I 
 ## Hardware Setup for Hadoop
 For this project there will be three Raspberry Pi version 4 micro computers set up in a cluster. One name node and two data nodes. The following is the process for setting up the Pis headlessly (no need for periphereals, i.e. monitor or keyboard).
