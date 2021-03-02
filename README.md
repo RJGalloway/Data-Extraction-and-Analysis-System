@@ -34,6 +34,6 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
          Remove the card from the PC and reinsert. If you do not do this the drive will show as Fat32 and you wont be able to see the root directory.
          
-         Now create a blank text file in the root directory of the sd card and name it * ssh *.
+         Now create a blank text file in the root directory of the sd card and name it _ssh_ .
          
          
