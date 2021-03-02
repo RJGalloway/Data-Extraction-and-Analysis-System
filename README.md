@@ -4,5 +4,5 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
 1. Navigate to [Raspberry Pi OS Installer](https://www.raspberrypi.org/software/).
 
-..*Download the installer for your desired OS
+   Download the installer for your desired OS.
 
