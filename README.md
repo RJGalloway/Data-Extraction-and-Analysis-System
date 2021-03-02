@@ -27,13 +27,13 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
   * Download the Raspberry Pi OS installer for your desired OS.
          
-         * Insert the micro sd card that will be used in your pi into your PC.
+  * Insert the micro sd card that will be used in your pi into your PC.
          
-         * From the program menu select the Raspberry Pi OS, then the intended drive
+  * From the program menu select the Raspberry Pi OS, then the intended drive
 **2.** After flashing the OS image to the micro sd card:
 
-         * Remove the card from the PC and reinsert. If you do not do this the drive will show as Fat32 and you wont be able to see the root directory.
+   * Remove the card from the PC and reinsert. If you do not do this the drive will show as Fat32 and you wont be able to see the root directory.
          
-         * Now create a blank text file in the root directory of the sd card and name it ssh.
+   * Now create a blank text file in the root directory of the sd card and name it **_ssh_**.
          
          
