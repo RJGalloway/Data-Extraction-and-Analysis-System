@@ -123,7 +123,7 @@ Type:
 ``` Console
   sudo nano /etc/hosts
 ```
-Your Hosts dil should resemble this, by inserting your own IP address where there is an * :
+Your Hosts should resemble this, by inserting your own IP address where there is an * :
 
 ```
   #/etc/hosts
@@ -136,4 +136,14 @@ Your Hosts dil should resemble this, by inserting your own IP address where ther
   192.168.*.*    DataNode1
   192.168.*.*    DataNode2
 
+```
+### 4. installing Hadoop
+* For the purposes of this project I am using a stable, archived, version of Hadoop to avoid any conflicts. 
+
+``` Console
+  wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.1/hadoop-2.7.1.tar.gz
+  cd ~
+  sudo tar -xvzf hadoop-.2.7.1.tar.gz -C /opt/
+  cd /opt
+  sudo chown -R hduser:hadoop hadoop-2.7.1/
 ```
