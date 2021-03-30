@@ -280,5 +280,84 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 ```
 * The first property tells us that we want to use Yarn as the MapReduce framework. The other properties are some specific settings for our Raspberry Pi. For example we tell that the Yarn Mapreduce Application Manager gets 256 megabytes of RAM and so does the Map and Reduce containers. These values allow us to actually run stuff, the default size is 1,5GB which our Pi can't deliver with its 1GB RAM.
 
+**yarn-site.xml**
 
+```
+<property>
+  <name>yarn.nodemanager.aux-services</name>
+  <value>mapreduce_shuffle</value>
+</property>
+<property>
+  <name>yarn.nodemanager.resource.cpu-vcores</name>
+  <value>4</value>
+</property>
+<property>
+  <name>yarn.nodemanager.resource.memory-mb</name>
+  # <!-- <value>768</value> -->
+  <value>1024</value>
+</property>
+<property>
+  <name>yarn.scheduler.minimum-allocation-mb</name>
+  <value>128</value>
+</property>
+<property>
+  <name>yarn.scheduler.maximum-allocation-mb</name>
+  # <!-- <value>768</value> -->
+  <value>1024</value>
+</property>
+<property>
+  <name>yarn.scheduler.minimum-allocation-vcores</name>
+  <value>1</value>
+</property>
+<property>
+  <name>yarn.scheduler.maximum-allocation-vcores</name>
+  <value>4</value>
+</property>
 
+# <!-- https://stackoverflow.com/questions/20598513/only-one-node-in-resourcemanager -->
+
+<property>
+  <name>yarn.resourcemanager.scheduler.address</name>
+  <value>RaspberryPiHadoopNameNode:8030</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.address</name>
+  <value>RaspberryPiHadoopNameNode:8032</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.webapp.address</name>
+  <value>RaspberryPiHadoopNameNode:8088</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.resource-tracker.address</name>
+  <value>RaspberryPiHadoopNameNode:8031</value>
+</property>
+<property>
+  <name>yarn.resourcemanager.admin.address</name>
+  <value>RaspberryPiHadoopNameNode:8033</value>
+</property>
+
+# <!-- Values Added Below by DQYDJ -->
+
+<property>
+  <name>yarn.nodemanager.vmem-check-enabled</name>
+  <value>false</value>
+  <description>Whether virtual memory limits will be enforced for containers</description>
+</property>
+<property>
+  <name>yarn.nodemanager.vmem-pmem-ratio</name>
+  <value>4</value>
+  <description>Ratio between virtual memory to physical memory when setting memory limits for containers</description>
+</property>
+
+* This file tells Hadoop some information about this node, like the maximum number of memory and cores that can be used. We limit the usable RAM to 768 megabytes, that leaves a bit of memory for the OS and Hadoop. A container will always receive a memory amount that is a multitude of the minimum allocation, 128 megabytes. For example a container that needs 450 megabytes, will get 512 megabytes assigned
+
+**slaves**
+
+Add NameNode and DataNodes:
+
+```
+NameNode
+DataNode1
+DataNode2
+```
