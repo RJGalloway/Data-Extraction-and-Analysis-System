@@ -188,7 +188,19 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 ```
 * For the following line:
 ```
-export JAVA_HOME=$(readlink -f /usr/lib/jvm/java-8-openjdk-armhf | sed "s:jre/bin/java::")
+  export JAVA_HOME=$(readlink -f /usr/lib/jvm/java-8-openjdk-armhf | sed "s:jre/bin/java::")
 ```
-/usr/lib/jvm/java-8-openjdk-armhf is going to be your directory location for java. 
+* /usr/lib/jvm/java-8-openjdk-armhf is going to be your directory location for java. 
+* Any type you update the bashrc file you need to source it for the changes to take effect.
 
+``` Console
+  source ~./bashrc
+```
+* If everything went correctly you should be able to see the version of Hadoop installed:
+
+``` Console
+  hadoop version
+```
+* With an expected output of:
+
+![Version](version.PNG)
