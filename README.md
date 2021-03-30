@@ -45,8 +45,8 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
    
    * I recommend downloading VNC viewer to go in and set up your desktop for each pi and do the initial configuration/ password changes
    * Once connected to the pi at the terminal type:
-   ```console
-   pi@raspberrypi:~ sudo raspi-config
-   ```
+  
+        sudo raspi-config
+   
          
          
