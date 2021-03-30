@@ -370,3 +370,4 @@ DataNode2
   chmod 750 /hdfs/tmp
   hdfs namenode -format
 ```
+If everything has been configured right hwen you run hdfs namenode -format you shouldnt see any errors. 
