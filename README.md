@@ -251,8 +251,8 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 ``` console
   cp mapred-site.xml.template mapred-site.xml
 ```
-**mapred-site.hml**
-
+**mapred-site.xml**
+```
   <property>
     <name>mapreduce.framework.name</name>
     <value>yarn</value>
@@ -277,7 +277,7 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
     <name>yarn.app.mapreduce.am.resource.mb</name>
     <value>256</value>
   </property>
-
+```
 * The first property tells us that we want to use Yarn as the MapReduce framework. The other properties are some specific settings for our Raspberry Pi. For example we tell that the Yarn Mapreduce Application Manager gets 256 megabytes of RAM and so does the Map and Reduce containers. These values allow us to actually run stuff, the default size is 1,5GB which our Pi can't deliver with its 1GB RAM.
 
 
