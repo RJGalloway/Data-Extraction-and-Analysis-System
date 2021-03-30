@@ -204,3 +204,7 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 * With an expected output of:
 
 ![Version](version.PNG)
+
+### Configuring Hadoop 2.7.1
+
+* First step is to hard code the path to our Java installation for Hadoop in the *hadoop-env.sh* file
