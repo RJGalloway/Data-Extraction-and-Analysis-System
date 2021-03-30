@@ -43,12 +43,12 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
    * To connect fromm windows, open a command prompt window and type ssh pi@raspberrypi, your initial password is raspberry. 
    
-   * I recommend downloading VNC viewer to go in and set up your desktop for each pi and do the initial configuration/ password changes
+   * I recommend downloading VNC viewer to go in and set up your desktop for each pi and do the initial configuration/ password changes. 
    * Once connected to the pi at the terminal type:
   ```console
         sudo raspi-config
   ```
-  This should bring up the following interfact where you will select option 1 System Options.
+  * This should bring up the following interfact where you will select option 1 System Options.
   
   ![config](raspi-config1.PNG)
   
@@ -56,10 +56,18 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   
   ![config](raspi-config2.PNG)
    
-   You can rename your pi to whatever you want, personally I named them for their function and started with the bottom pi in my rack as NameNode, then DataNode1, DataNode2, ...... That way if a node goes out you can easily swap in a new node and know its location. 
+   * You can rename your pi to whatever you want, personally I named them for their function and started with the bottom pi in my rack as NameNode, then DataNode1, DataNode2, ...... That way if a node goes out you can easily swap in a new node and know its location. 
    
    
   ![config](raspi-config3.PNG)
-   
-         
-         
+  
+  * While in the menu if you plan on using VNC viewer for the desktop, I had to change the resolution in this configuration menu to get it to display. 
+
+**4.** Creating a New Group and User
+
+* Type the following commands:
+```console
+sudo addgroup hadoop
+sudo adduser --ingroup hadoop hduser
+```
+
