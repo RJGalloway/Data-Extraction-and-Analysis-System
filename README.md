@@ -63,7 +63,9 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   
   * While in the menu if you plan on using VNC viewer for the desktop, I had to change the resolution in this configuration menu to get it to display. 
 
-**4.** Creating a New Group and User
+## Setting up the NameNode
+
+**1.** Creating a New Group and User
 
 * Type the following commands:
 ```console
@@ -72,8 +74,28 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 ```
 * Set the password to whatever you like, but write it down.
 * No need to fill out the information of hduser, you can press enter and leave all fields blank.
-* everything Hadoop is going to happen via this newly created user so change to it by typing:
+* Everything Hadoop is going to happen via this newly created user so change to it by typing:
 ```console
   su hduser
 ```
-## Generating an SSH Key
+**2.** Generating an SSH Key
+
+* Change to your root directory:
+```console
+  cd ~
+```
+* Make a new directory:
+``` Console
+  mkdir .shh
+```
+* Generate the SSH key
+``` Console
+  ssh-keygen -t rsa -P ""
+```
+* Press enter to save the key to the default path /home/hduser/.ssh/id_rsa
+* Concatenate the public key and store in an authorized keys directory with the following command:
+``` Console
+  cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
+```
+
+
