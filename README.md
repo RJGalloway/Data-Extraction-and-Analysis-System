@@ -138,6 +138,13 @@ Your Hosts should resemble this, by inserting your own IP address where there is
 
 ```
 ### 4. installing Hadoop
+* Java was not included with the Raspbian OS so we need to download it. Due to the version of Hadoop I am choosing to run we need JDK 8. Any version different than JDK 8 will cause conflicts when setting up Hadoop.
+
+``` Console
+  sudo apt update
+  sudo apt install openjdk-8-jdk
+```
+
 * For the purposes of this project I am using a stable, archived, version of Hadoop to avoid any conflicts. 
 
 ``` Console
