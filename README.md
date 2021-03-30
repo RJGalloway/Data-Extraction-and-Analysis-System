@@ -70,4 +70,9 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 sudo addgroup hadoop
 sudo adduser --ingroup hadoop hduser
 ```
-
+* Set the password to whatever you like, but write it down.
+* No need to fill out the information of hduser, you can press enter and leave all fields blank.
+* everything Hadoop is going to happen via this newly created user so change to it by typing:
+  ```console
+      su hduser
+  ```
