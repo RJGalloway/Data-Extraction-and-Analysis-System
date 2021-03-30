@@ -20,7 +20,7 @@ You can set up the Pi headless using WiFi, but for stability I opted to hardwire
 
 Obviously you will need ethernet cables to connect the Pi's. You can purchase patch cables or build your own (I opted to make my own custom sizes to keep the build clean looking). Patch cables will work well for this if not making your won. 
 
-## Hardware Setup for Hadoop
+## Enabling SSH and connecting to the Cluster
 For this project there will be three Raspberry Pi version 4 micro computers set up in a cluster. One name node and two data nodes. The following is the process for setting up the Pis headlessly (no need for periphereals, i.e. monitor or keyboard).
 
 **1.** Navigate to [Raspberry Pi OS Installer](https://www.raspberrypi.org/software/).
@@ -38,6 +38,9 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
    * Now create a blank text file in the **_root_** directory of the sd card and name it **_ssh_**.
    
 **3.** SSH into the Pis:
-   *
+
+   * To connect fromm windows, open a command prompt window and type ssh pi@raspberrypi, your initial password is raspberry.
+   
+   * I recommend downloading VNC viewer to go in and set up your desktop for each pi and do the initial configuration/ password changes
          
          
