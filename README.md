@@ -97,5 +97,9 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 ``` Console
   cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
 ```
-
+* You can verify the preceeding step by typing:
+``` Console
+  ssh localhost
+```
+* Connection should establish, type exit to disconnect
 
