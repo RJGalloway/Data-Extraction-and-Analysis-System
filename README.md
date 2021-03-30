@@ -205,7 +205,7 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 
 ![Version](version.PNG)
 
-### Configuring Hadoop 2.7.1
+### 6. Configuring Hadoop 2.7.1
 
 * First step is to explicitly tell Haddop the path to our Java installation for Hadoop in the *hadoop-env.sh* file. It comes set to $JAVA_HOME, but Hadoop igonores this command and was the cause of many errors. To change to the Hadoop directory that contains the configuration files enter:
 
@@ -350,6 +350,7 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
   <description>Ratio between virtual memory to physical memory when setting memory limits for containers</description>
 </property>
 
+```
 * This file tells Hadoop some information about this node, like the maximum number of memory and cores that can be used. We limit the usable RAM to 768 megabytes, that leaves a bit of memory for the OS and Hadoop. A container will always receive a memory amount that is a multitude of the minimum allocation, 128 megabytes. For example a container that needs 450 megabytes, will get 512 megabytes assigned
 
 **slaves**
@@ -360,4 +361,12 @@ Add NameNode and DataNodes:
 NameNode
 DataNode1
 DataNode2
+```
+### 7. Preparing HDFS on the NameNode
+
+``` console
+  sudo mkdir -p /hdfs/tmp
+  sudo chown hduser:hadoop /hdfs/tmp
+  chmod 750 /hdfs/tmp
+  hdfs namenode -format
 ```
