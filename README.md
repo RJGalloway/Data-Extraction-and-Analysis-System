@@ -25,7 +25,7 @@ You will need ethernet cables to connect the Pi's to the switch. You can purchas
 ## Enabling SSH, Connecting to the Cluster, Initial Setup
 For this project there will be three Raspberry Pi version 4 micro computers set up in a cluster. One name node and two data nodes. The following is the process for setting up the Pis headlessly (no need for periphereals, i.e. monitor or keyboard).
 
-**1.** Navigate to [Raspberry Pi OS Installer](https://www.raspberrypi.org/software/).
+### 1. Navigate to [Raspberry Pi OS Installer](https://www.raspberrypi.org/software/).
 
   * Download the Raspberry Pi OS installer for your desired OS.
          
