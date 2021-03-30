@@ -33,13 +33,13 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
          
   * From the program menu select the Raspberry Pi OS, then the intended drive
   
-**2.** After flashing the OS image to the micro sd card:
+### 2. After flashing the OS image to the micro sd card:
 
    * Remove the card from the PC and reinsert. If you do not do this the drive will show as Fat32 and you wont be able to see the root directory.
          
    * Now create a blank text file in the **_root_** directory of the sd card and name it **_ssh_**.
    
-**3.** SSH into the Pis:
+### 3. SSH into the Pis:
 
    * To connect fromm windows, open a command prompt window and type ssh pi@raspberrypi, your initial password is raspberry. 
    
@@ -65,7 +65,7 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
 ## Setting up the NameNode
 
-**1.** Creating a New Group and User
+### 1. Creating a New Group and User
 
 * Type the following commands:
 ```console
@@ -78,7 +78,7 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 ```console
   su hduser
 ```
-**2.** Generating an SSH Key
+### 2. Generating an SSH Key
 
 * Change to your root directory:
 ```console
@@ -102,4 +102,22 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   ssh localhost
 ```
 * Connection should establish, type exit to disconnect
+
+### 3. Update Hosts
+
+* To reiterate from early, pick uniform names for your Pis. NameNode is the master, DataNode1 .... DataNodeN are you slaves. 
+* At this point you need to go through your own networks method of assigning static ip address to the Pis. Once you have done this you need to reboot each pi. 
+``` Console
+  sudo reboot
+```
+* After the reboot verify the Pis have the correct assigned ip address you picked by typing:
+``` Console
+  ip address
+```
+Highlighted in yellow is the start of your ipaddress. The whole address is not show in my image for security reasons:
+![Ip](ipaddress.PNG)
+* To update the hosts type:
+``` Console
+  sudo nano /etc/hosts
+```
 
