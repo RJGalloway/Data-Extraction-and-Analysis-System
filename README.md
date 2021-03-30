@@ -219,7 +219,7 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 ```
 * A source of strife was that Hadoop did not like the path without the / at the end. When added no issues finding the JDK.
 
-* Now is editing several .xml files in the configuration. All of the following lines will be placed between the <Configuration> and </configuration> lines for each file. Just use:
+* Now we need to edit several .xml files and the slave file in the configuration. All of the following lines will be placed between the <Configuration> and </configuration> lines for each file. Just use:
 ``` Console
   nano *****.xml 
 ```
