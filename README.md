@@ -207,14 +207,77 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 
 ### Configuring Hadoop 2.7.1
 
-* First step is to hard code the path to our Java installation for Hadoop in the *hadoop-env.sh* file. It comes set to $JAVA_HOME, but Hadoop igonores this command and was the cause of many errors. To change to the Hadoop directory that contains the configuration files enter:
+* First step is to explicitly tell Haddop the path to our Java installation for Hadoop in the *hadoop-env.sh* file. It comes set to $JAVA_HOME, but Hadoop igonores this command and was the cause of many errors. To change to the Hadoop directory that contains the configuration files enter:
 
 ``` Console
   cd $HADOOP_CONF_DIR
   nano hadoop-env.sh
 ```
+* Under Java implementation to use at the top of the file put your path to your JDK 8. Mine is as follows:
+```Console
+  JAVA_HOME=/usr/lib/jvm/java-8-openjdk-armhf/
+```
+* A source of strife was that Hadoop did not like the path without the / at the end. When added no issues finding the JDK.
 
+* Now is editing several .xml files in the configuration. All of the following lines will be placed between the <Configuration> and </configuration> lines for each file. Just use:
+``` Console
+  nano *****.xml 
+```
+   for each of the following files.
 
+**core-site.xml**
+
+```
+  <property>  
+    <name>fs.default.name</name>
+    <value>hdfs://localhost:54310</value>
+  </property>  
+  <property>  
+    <name>hadoop.tmp.dir</name>
+    <value>/hdfs/tmp</value>
+  </property>
+```
+
+**hdfs-site.xml**
+
+```
+  <property>  
+    <name>dfs.replication</name>  
+    <value>1</value>  
+  </property>
+```
+* Also copy template to mapred-site.xml\
+ 
+``` console
+  cp mapred-site.xml.template mapred-site.xml
+```
+**mapred-site.hml**
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+  </property>
+  <property>
+   <name>mapreduce.map.memory.mb</name>
+   <value>256</value>
+  </property>
+  <property>
+    <name>mapreduce.map.java.opts</name>
+    <value>-Xmx210m</value>
+  </property>
+  <property>
+    <name>mapreduce.reduce.memory.mb</name>
+    <value>256</value>
+  </property>
+  <property>
+    <name>mapreduce.reduce.java.opts</name>
+    <value>-Xmx210m</value>
+  </property>
+  <property>
+    <name>yarn.app.mapreduce.am.resource.mb</name>
+    <value>256</value>
+  </property>
+
+* The first property tells us that we want to use Yarn as the MapReduce framework. The other properties are some specific settings for our Raspberry Pi. For example we tell that the Yarn Mapreduce Application Manager gets 256 megabytes of RAM and so does the Map and Reduce containers. These values allow us to actually run stuff, the default size is 1,5GB which our Pi can't deliver with its 1GB RAM.
 
 
 
