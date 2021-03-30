@@ -207,4 +207,14 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 
 ### Configuring Hadoop 2.7.1
 
-* First step is to hard code the path to our Java installation for Hadoop in the *hadoop-env.sh* file
+* First step is to hard code the path to our Java installation for Hadoop in the *hadoop-env.sh* file. It comes set to $JAVA_HOME, but Hadoop igonores this command and was the cause of many errors. To change to the Hadoop directory that contains the configuration files enter:
+
+``` Console
+  cd $HADOOP_CONF_DIR
+  nano hadoop-env.sh
+```
+
+
+
+
+
