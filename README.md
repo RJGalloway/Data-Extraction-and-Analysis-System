@@ -56,5 +56,10 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   
   ![config](raspi-config2.PNG)
    
+   You can rename your pi to whatever you want, personally I named them for their function and started with the bottom pi in my rack as NameNode, then DataNode1, DataNode2, ...... That way if a node goes out you can easily swap in a new node and know its location. 
+   
+   
+  ![config](raspi-config3.PNG)
+   
          
          
