@@ -118,7 +118,7 @@ Highlighted in yellow is the start of your ipaddress. The whole address is not s
 
 ![Ip](ipaddress.PNG)
 
-* Now that you know the IP adresses of your Pis and ahve set them to static it is time to update the hosts:
+* Now that you know the static IP adresses of your Pis it is time to update the hosts:
 Type:
 ``` Console
   sudo nano /etc/hosts
@@ -137,7 +137,7 @@ Your Hosts should resemble this, by inserting your own IP address where there is
   192.168.*.*    DataNode2
 
 ```
-### 4. installing Hadoop
+### 4. Installing Hadoop
 * Java was not included with the Raspbian OS so we need to download it. Due to the version of Hadoop I am choosing to run we need JDK 8. Any version different than JDK 8 will cause conflicts when setting up Hadoop.
 
 ``` Console
@@ -154,3 +154,41 @@ Your Hosts should resemble this, by inserting your own IP address where there is
   cd /opt
   sudo chown -R hduser:hadoop hadoop-2.7.1/
 ```
+* Techinally Hadoop is installed at this point, but there is a lot of configuration left to do.
+### 5. Setting environment Variables
+
+* Best way to set the environment vaibles is to modify the ./bashrc file:
+
+``` Console
+  nano ./bashrc
+```
+* At the end of the file you are going to add the following lines for Hadoop:
+
+```
+# Hadoop
+export JAVA_HOME=$(readlink -f /usr/lib/jvm/java-8-openjdk-armhf | sed "s:jre/bin/java::")
+export HADOOP_HOME=/opt/hadoop-2.7.1
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="$HADOOP_OPTS -Djava.library.path=$HADOOP_HOME/lib"
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export YARN_HOME=$HADOOP_HOME
+export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+  # Suppress message: "WARN util.NativeCodeLoader: Unable to load
+  # native-hadoop library for your platform... using builtin-java
+  # classes where applicable"
+
+# Hadoop Warning Suppression
+export HADOOP_HOME_WARN_SUPPRESS=1
+export HADOOP_ROOT_LOGGER="WARN,DRFA"
+```
+* For the following line:
+```
+export JAVA_HOME=$(readlink -f /usr/lib/jvm/java-8-openjdk-armhf | sed "s:jre/bin/java::")
+```
+/usr/lib/jvm/java-8-openjdk-armhf is going to be your directory location for java. 
+
