@@ -252,6 +252,7 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
   cp mapred-site.xml.template mapred-site.xml
 ```
 **mapred-site.hml**
+
   <property>
     <name>mapreduce.framework.name</name>
     <value>yarn</value>
