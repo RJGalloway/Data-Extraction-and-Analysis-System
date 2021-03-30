@@ -20,6 +20,8 @@ You can set up the Pi headless using WiFi, but for stability I opted to hardwire
 
 Obviously you will need ethernet cables to connect the Pi's. You can purchase patch cables or build your own (I opted to make my own custom sizes to keep the build clean looking). Patch cables will work well for this if not making your won. 
 
+![pi Cluster](PiClusterImage.jpg)
+
 ## Enabling SSH and connecting to the Cluster
 For this project there will be three Raspberry Pi version 4 micro computers set up in a cluster. One name node and two data nodes. The following is the process for setting up the Pis headlessly (no need for periphereals, i.e. monitor or keyboard).
 
