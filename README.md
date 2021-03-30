@@ -50,7 +50,7 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   ```
   This should bring up the following interfact where you will select option 1 System Options.
   
-  ![config](raspi-config.PNG)
+  ![config](raspi-config1.PNG)
    
          
          
