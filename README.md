@@ -18,7 +18,7 @@ You can set up the Pi headless using WiFi, but for stability I opted to hardwire
 
 [Netgear 5 Port Switch](https://www.amazon.com/gp/product/B07S98YLHM/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
 
-Obviously you will need ethernet cables to connect the Pi's. You can purchase patch cables or build your own (I opted to make my own custom sizes to keep the build clean looking). Patch cables will work well for this if not making your won. 
+You will need ethernet cables to connect the Pi's to the switch. You can purchase patch cables or build your own (I opted to make my own custom sizes to keep the build clean looking). Patch cables will work well for this if not making your won. 
 
 ![pi Cluster](PiClusterImage.jpg)
 
