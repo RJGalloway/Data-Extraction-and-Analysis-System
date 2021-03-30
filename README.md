@@ -115,9 +115,22 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   ip address
 ```
 Highlighted in yellow is the start of your ipaddress. The whole address is not show in my image for security reasons:
+
 ![Ip](ipaddress.PNG)
-* To update the hosts type:
+
+* Now that you know the IP adresses of your Pis and ahve set them to static it is time to update the hosts:
+Type:
 ``` Console
   sudo nano /etc/hosts
 ```
+Your Hosts dil should resemble this, by inserting your own IP address where there is an * :
 
+#/etc/hosts
+127.0.0.1       localhost
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+
+192.168.*.*       NameNode
+192.168.*.*    DataNode1
+192.168.*.*    DataNode2
