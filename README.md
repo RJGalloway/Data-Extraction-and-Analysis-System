@@ -371,3 +371,13 @@ DataNode2
   hdfs namenode -format
 ```
 If everything has been configured right hwen you run hdfs namenode -format you shouldnt see any errors. 
+
+##Datanode Configuration
+
+### 1. Preparing Data Nodes
+
+* Just like for the NameNode, for each DataNode, in our case DataNode 1 and 2, you need to repeat the process of updating the local hosts so the pis can be accessed via an address. 
+
+``` 
+  sudo nano /etc/hosts
+```
