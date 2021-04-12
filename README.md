@@ -381,3 +381,24 @@ If everything has been configured right hwen you run hdfs namenode -format you s
 ``` 
   sudo nano /etc/hosts
 ```
+* Your Hosts should resemble this, by inserting your own IP address where there is an * :
+
+```
+  #/etc/hosts
+  127.0.0.1       localhost
+  ::1             localhost ip6-localhost ip6-loopback
+  ff02::1         ip6-allnodes
+  ff02::2         ip6-allrouters
+
+  192.168.*.*    NameNode
+  192.168.*.*    DataNode1
+  192.168.*.*    DataNode2
+
+```
+* Every node also needs an *hduser*, just like on the NameNode:
+
+```
+  console
+  sudo addgroup hadoop
+  sudo adduser --ingroup hadoop hduser
+```
