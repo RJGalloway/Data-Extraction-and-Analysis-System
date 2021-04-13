@@ -160,7 +160,7 @@ Your Hosts should resemble this, by inserting your own IP address where there is
 * Best way to set the environment vaibles is to modify the ./bashrc file:
 
 ``` Console
-  nano ./bashrc
+  nano ~/.bashrc
 ```
 * At the end of the file you are going to add the following lines for Hadoop:
 
