@@ -105,7 +105,7 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
 
 ### 3. Update Hosts
 
-* To reiterate from early, pick uniform names for your Pis. NameNode is the master, DataNode1 .... DataNodeN are you slaves. 
+* To reiterate from early, pick uniform names for your Pis. NameNode is the master, DataNode1 .... DataNodeN are your slaves. 
 * At this point you need to go through your own networks method of assigning static ip address to the Pis. Once you have done this you need to reboot each pi. 
 ``` Console
   sudo reboot
@@ -318,23 +318,23 @@ export HADOOP_ROOT_LOGGER="WARN,DRFA"
 
 <property>
   <name>yarn.resourcemanager.scheduler.address</name>
-  <value>RaspberryPiHadoopNameNode:8030</value>
+  <value>NameNode:8030</value>
 </property>
 <property>
   <name>yarn.resourcemanager.address</name>
-  <value>RaspberryPiHadoopNameNode:8032</value>
+  <value>NameNode:8032</value>
 </property>
 <property>
   <name>yarn.resourcemanager.webapp.address</name>
-  <value>RaspberryPiHadoopNameNode:8088</value>
+  <value>NameNode:8088</value>
 </property>
 <property>
   <name>yarn.resourcemanager.resource-tracker.address</name>
-  <value>RaspberryPiHadoopNameNode:8031</value>
+  <value>NameNode:8031</value>
 </property>
 <property>
   <name>yarn.resourcemanager.admin.address</name>
-  <value>RaspberryPiHadoopNameNode:8033</value>
+  <value>NameNode:8033</value>
 </property>
 
 # <!-- Values Added Below by DQYDJ -->
