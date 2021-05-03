@@ -11,43 +11,43 @@ In this step, we'll create a new user group called `hadoop` and user called `hdu
 ```
 
 > Press ENTER for all user information to select default; press Y to save
-
+``` console
     sudo adduser hduser sudo
-
+```
 
 Everything Hadoop will be happening via the `hduser`. Let's change to this user.
-
+``` console
     su hduser
-
+```
 
 ### SSH Key
 
 Although we are using a single node setup in this part, I decided to already create SSH keys. These will be the keys that the nodes use to talk to each other.
-
+``` console
     cd ~
     mkdir .ssh
     ssh-keygen -t rsa -P ""
-
+```
 
 > Press ENTER to save the key to the default path `/home/hduser/.ssh/id_rsa`
-
+``` console
     cat ~/.ssh/id_rsa.pub > ~/.ssh/authorized_keys
-
+```
 
 To verify that everything is working, you can easily create a SSH tunnel to localhost.
-
+``` console
     ssh localhost
-
+```
 
 ### Update `hosts`
 
 Make sure you pick uniform names for all of your Pi nodes – in /etc/hostname, I used ‘RaspberryPiHadoopNameNode’ for the master, and ‘RaspberryPiHadoopDataNode#’ for the slaves. Let's update `hosts`:
-
+``` console
     sudo nano /etc/hosts
-
+```
 
 Use the configuration below:
-
+``` console
     #/etc/hosts
     127.0.0.1         localhost
     ::1               localhost ip6-localhost ip6-loopback
@@ -59,14 +59,14 @@ Use the configuration below:
     192.168.1.*       RaspberryPiHadoopNameNode
     192.168.1.*       RaspberryPiHadoopDataNode1
     192.168.1.*       RaspberryPiHadoopDataNode2
-
+```
 
 ### Installing Java8
 
 Execute the following command to install Java8:
-
+``` console
     sudo apt install openjdk-8-jre-headless openjdk-8-jdk-headless
-
+```
 
 Verify the installation with:
 
