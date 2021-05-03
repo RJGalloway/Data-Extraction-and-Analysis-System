@@ -3,7 +3,7 @@
 
 ## Raspberry hadoop Cluster
 
-* [Raspberry Pi Hadoop Cluster (Part 1) - Hardware Setup](RPiHadoop/part1.md)
+* [Raspberry Pi Hadoop Cluster (Part 1) - Hardware Setup](RPiHadoop/raspiHadoopPt1.md)
 ## Hardware Required
 
 For cost effectiveness I purchased three Canakits which come with everything you need to set up the Raspberry Pi cluster:
