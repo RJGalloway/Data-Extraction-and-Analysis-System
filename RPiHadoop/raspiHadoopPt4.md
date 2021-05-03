@@ -1,5 +1,8 @@
 # Installing Spark
 
+!This willinstall spark, and it can run in standalone mode, but I failed to get it to launch properly with Hadoop. Therefore no further testing could be done with spark at this time!
+
+
 Installation of Apache Spark is very easy. In your home directory `~/`, get the latest [Apache Spark built for Hadoop 2.7](https://spark.apache.org/downloads.html), extract it and then move it to /opt:
 ```console
     cd ~/
@@ -58,8 +61,6 @@ You'll then be able to access the UI by going to:
 ## Test Spark
 
 ### Spark in Standalone Mode
-
-[Source](https://gist.github.com/datalove/5dbb69936d7284601f3e)
 
 #### Test Spark
 
