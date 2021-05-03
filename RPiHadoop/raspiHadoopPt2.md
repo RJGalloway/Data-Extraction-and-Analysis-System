@@ -5,7 +5,7 @@
 
 In this step, we'll create a new user group called `hadoop` and user called `hduser`
 
-'''
+'''console
     sudo addgroup hadoop
     sudo adduser --ingroup hadoop hduser
 '''
