@@ -1,4 +1,4 @@
-# Data-Extraction-and-Analysis-System: Namenode Configuration and INstalling Hadoop
+# Data-Extraction-and-Analysis-System: Namenode Configuration and Installing Hadoop
 
 ## Preparing NameNode
 
