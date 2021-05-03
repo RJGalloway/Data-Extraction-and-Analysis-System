@@ -1,4 +1,9 @@
 # Data-Extraction-and-Analysis-System
+
+
+## Raspberry hadoop Cluster
+
+* [Raspberry Pi Hadoop Cluster (Part 1) - Hardware Setup](RPiHadoop/part_1.md)
 ## Hardware Required
 
 For cost effectiveness I purchased three Canakits which come with everything you need to set up the Raspberry Pi cluster:
