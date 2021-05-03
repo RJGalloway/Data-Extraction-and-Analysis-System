@@ -63,3 +63,5 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   
   * While in the menu if you plan on using VNC viewer for the desktop, I had to change the resolution in this configuration menu to get it to display. 
 
+DO THIS PROCESS FOR EVERY NODE YOU WILL BE CONFIGURING!
+
