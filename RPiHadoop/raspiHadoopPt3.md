@@ -1,10 +1,3 @@
-# Raspberry Pi Hadoop Cluster (Part 3) - Building a Raspberry Pi Hadoop Cluster (DataNodes)
-
-_Revision Date: 4/22/2021_
-
-[Source](https://web.archive.org/web/20170215170838/http://www.becausewecangeek.com/building-a-raspberry-pi-hadoop-cluster-part-2/)
-
-
 ## Preparing DataNodes
 
 ### User Permissions
