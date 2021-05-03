@@ -63,18 +63,3 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   
   * While in the menu if you plan on using VNC viewer for the desktop, I had to change the resolution in this configuration menu to get it to display. 
 
-## Setting up the NameNode
-
-### 1. Creating a New Group and User
-
-* Type the following commands:
-```console
-  sudo addgroup hadoop
-  sudo adduser --ingroup hadoop hduser
-```
-* Set the password to whatever you like, but write it down.
-* No need to fill out the information of hduser, you can press enter and leave all fields blank.
-* Everything Hadoop is going to happen via this newly created user so change to it by typing:
-```console
-  su hduser
-```
