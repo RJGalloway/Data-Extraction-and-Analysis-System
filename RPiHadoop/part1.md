@@ -50,16 +50,16 @@ For this project there will be three Raspberry Pi version 4 micro computers set 
   ```
   * This should bring up the following interfact where you will select option 1 System Options.
   
-  ![config](raspi-config1.PNG)
+  ![config](https://github.com/RJGalloway/Data-Extraction-and-Analysis-System/blob/main/img/raspi-config1.png)
   
   Then go to option 54 Hostname
   
-  ![config](raspi-config2.PNG)
+  ![config](https://github.com/RJGalloway/Data-Extraction-and-Analysis-System/blob/main/img/raspi-config2.png)
    
    * You can rename your pi to whatever you want, personally I named them for their function and started with the bottom pi in my rack as NameNode, then DataNode1, DataNode2, ...... That way if a node goes out you can easily swap in a new node and know its location. 
    
    
-  ![config](raspi-config3.PNG)
+  ![config](https://github.com/RJGalloway/Data-Extraction-and-Analysis-System/blob/main/img/raspi-config3.png)
   
   * While in the menu if you plan on using VNC viewer for the desktop, I had to change the resolution in this configuration menu to get it to display. 
 
