@@ -1,4 +1,4 @@
-# Data-Extraction-and-Analysis-System
+# Data-Extraction-and-Analysis-System: Setting Up Hardware
 ## Hardware Required
 
 For cost effectiveness I purchased three Canakits which come with everything you need to set up the Raspberry Pi cluster:
