@@ -69,37 +69,37 @@ Execute the following command to install Java8:
 ```
 
 Verify the installation with:
-
+``` console
     java -version
-
+```
 
 You should see:
-
+``` console
     openjdk version "11.0.9.1" 2020-11-04
     OpenJDK Runtime Environment (build 11.0.9.1+1-post-Raspbian-1deb10u2)
     OpenJDK Server VM (build 11.0.9.1+1-post-Raspbian-1deb10u2, mixed mode)
-
+```
 
 ## Hadoop 2.9.2
 
 ### Installation
 
 Follow the commands below to install Hadoop 2.9.2:
-
+``` console
     wget https://archive.apache.org/dist/hadoop/core/hadoop-2.9.2/hadoop-2.9.2.tar.gz
     sudo tar -xvzf hadoop-2.9.2.tar.gz -C /opt/
     cd /opt
     sudo chown -R hduser:hadoop hadoop-2.9.2/
-
+```
 ### Environment Variables
 
 First we need to set a few environment variables. There are a few ways to do this, but I always do it by editing the .bashrc file.
-
+``` console
     nano ~/.bashrc
-
+```
 
 Add the following lines at the end of the file:
-
+``` console
     # Hadoop
     export JAVA_HOME=$(readlink -f /usr/ | sed "s:jre/bin/java::")
     export HADOOP_HOME=/opt/hadoop-2.9.2
@@ -120,54 +120,54 @@ Add the following lines at the end of the file:
     # Hadoop Warning Suppression
     export HADOOP_HOME_WARN_SUPPRESS=1
     export HADOOP_ROOT_LOGGER="WARN,DRFA"
-
+```
 Changes in the .bashrc are not applied when you save this file. Refresh the environment variables by typing:
-
+``` console
     source ~/.bashrc
-
+```
 If everything is configured right, you should be able to print the installed version of Hadoop by typing:
-
+``` console
     hadoop version
-
+```
 Expected output:
-
+``` console
     Hadoop 2.9.2
     Subversion https://git-wip-us.apache.org/repos/asf/hadoop.git -r 826afbeae31ca687bc2f8471dc841b66ed2c6704
     Compiled by ajisaka on 2018-11-13T12:42Z
     Compiled with protoc 2.5.0
     From source with checksum 3a9939967262218aa556c684d107985
     This command was run using /opt/hadoop-2.9.2/share/hadoop/common/hadoop-common-2.9.2.jar
-
+```
 
 ## Configurations
 
 Begin by running the following command line in terminal to determine where you Java home path is. You can find the directory by typing `whereis java`.
 
 Expected output:
-
+``` console
     java: /usr/bin/java /usr/share/java /usr/share/man/man1/java.1.gz
-
+```
 
 Next, let's go to the directory that contains all the configuration files of Hadoop. We want to edit the _hadoop-env.sh_ file. For some reason we need to configure JAVA_HOME manually in this file, Hadoop seems to ignore our $JAVA_HOME.
-
+``` console
     cd $HADOOP_CONF_DIR
     nano hadoop-env.sh
-
+```
 
 Look for the line saying `JAVA_HOME=${JAVA_HOME}` and change it to your Java install directory. This was how the line looked after I changed it:
-
+``` console
     export JAVA_HOME=/usr
-
+```
 
 There are quite a few files that need to be edited now. These are XML files, you just have to paste the code bits below between the _configuration_ tags.
 
 **core-site.xml**
-
+``` console
     nano core-site.xml
-
+```
 
 Add the following pair/key between `<configuration>` and `</configuration>`:
-
+``` console
     <property>  
       <name>fs.default.name</name>
       <value>hdfs://RaspberryPiHadoopNameNode:54310</value>
@@ -176,33 +176,33 @@ Add the following pair/key between `<configuration>` and `</configuration>`:
       <name>hadoop.tmp.dir</name>
       <value>/hdfs/tmp</value>
     </property>
-
+```
 
 **hdfs-site.xml**
-
+``` console
     nano hdfs-site.xml
-
+```
 
 Add the following pair/key between `<configuration>` and `</configuration>`:
-
+``` console
     <property>  
       <name>dfs.replication</name>  
       <value>1</value>  
     </property>
-
+```
 
 Copy template to mapred-site.xml
-
+``` console
     cp mapred-site.xml.template mapred-site.xml
-
+```
 
 **mapred-site.xml**
-
+``` console
     nano mapred-site.xml
-
+```
 
 Add the following pair/key between `<configuration>` and `</configuration>`:
-
+``` console
     <property>
       <name>mapreduce.framework.name</name>
       <value>yarn</value>
@@ -227,18 +227,18 @@ Add the following pair/key between `<configuration>` and `</configuration>`:
       <name>yarn.app.mapreduce.am.resource.mb</name>
       <value>256</value>
     </property>
-
+```
 
 * The first property tells us that we want to use Yarn as the MapReduce framework. The other properties are some specific settings for our Raspberry Pi. For example we tell that the Yarn Mapreduce Application Manager gets 256 megabytes of RAM and so does the Map and Reduce containers. These values allow us to actually run stuff, the default size is 1,5GB which our Pi can't deliver with its 1GB RAM.
 
 
 **yarn-site.xml**
-
+``` console
     nano yarn-site.xml
-
+```
 
 Add the following pair/key between `<configuration>` and `</configuration>`:
-
+``` console
     <property>
       <name>yarn.nodemanager.aux-services</name>
       <value>mapreduce_shuffle</value>
@@ -293,8 +293,6 @@ Add the following pair/key between `<configuration>` and `</configuration>`:
       <value>RaspberryPiHadoopNameNode:8033</value>
     </property>
 
-    # <!-- Values Added Below by DQYDJ -->
-
     <property>
       <name>yarn.nodemanager.vmem-check-enabled</name>
       <value>false</value>
@@ -305,22 +303,22 @@ Add the following pair/key between `<configuration>` and `</configuration>`:
       <value>4</value>
       <description>Ratio between virtual memory to physical memory when setting memory limits for containers</description>
     </property>
-
+```
 
 * This file tells Hadoop some information about this node, like the maximum number of memory and cores that can be used. We limit the usable RAM to 768 megabytes, that leaves a bit of memory for the OS and Hadoop. A container will always receive a memory amount that is a multitude of the minimum allocation, 128 megabytes. For example a container that needs 450 megabytes, will get 512 megabytes assigned.
 
 
 **slaves**
-
+``` console
     nano slaves
-
+```
 
 Remove `localhost` and add both the NameNode and all the DataNodes:
-
+``` console
     RaspberryPiHadoopNameNode
     RaspberryPiHadoopDataNode1
     RaspberryPiHadoopDataNode2
-
+```
 
 * Two files must be edited on the master only: slaves and masters. The slaves file tells the master node which other nodes can be used for this cluster. Just add the nodes that you want to use for data processing to this file, perhaps even including the master node itself.
 
@@ -332,12 +330,12 @@ Make sure that your system can resolve these hostnames. This file only goes on t
 ### Preparing HDFS on NameNode
 
 Run the following commands to setup HDFS:
-
+``` console
     sudo mkdir -p /hdfs/tmp
     sudo chown hduser:hadoop /hdfs/tmp
     chmod 750 /hdfs/tmp
     hdfs namenode -format
-
+```
 
 You may see the error, you can ignore it:
 
@@ -347,17 +345,16 @@ You may see the error, you can ignore it:
     WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
     WARNING: All illegal access operations will be denied in a future release
 
-
 ### Testing HDFS on NameNode
 
 You can try testing HDFS on Namenode to ensure you can access it.
-
+``` console
     start-dfs.sh
-
+```
 
 You'll notice that it hangs, this is because we've listed `RaspberryPiHadoopDataNode1` and `RaspberryPiHadoopDataNode2` which haven't been setup yet. Just press `Ctrl + C` to quit the command. Run the following command:
-
+``` console
     hdfs dfs -ls /
-
+```
 
 If no errors return, you have successfully run your first HDFS command.
